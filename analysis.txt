@@ -3,8 +3,6 @@ Cache Behavior Lab
 ==================
 Comparing row-major vs column-major matrix traversal
 
-These are in order: 00, 02, 03
-
 --- Matrix Size: 1000 x 1000 ---
 Row-major:    1.42 ms (sum: 49500000)
 Column-major: 1.83 ms (sum: 49500000)
@@ -29,6 +27,9 @@ Ratio (col/row): 3.56x
 Tests complete.
 
 Section 2: Optimization Level Comparison
+
+These are in order: 00, 02, 03
+
 Cache Behavior Lab
 ==================
 Comparing row-major vs column-major matrix traversal
@@ -135,6 +136,15 @@ Ratio (col/row): 20.17x
 
 ==================
 Tests complete.
-Section 3: Assembly Analysis
 
+No, -O3 does not eliminate the performance gap between row-major and column-major traversal. 
+While -O3 significantly improves the execution speed of both versions, the row-major implementation benefits much more from the optimization and remains substantially faster. 
+For the largest matrix size (8000×8000), row-major traversal completed in 14.72 ms while column-major traversal took 297.03 ms, resulting in a performance ratio of over 20×. 
+This occurs because compiler optimizations can improve instruction efficiency, but they cannot change the underlying memory access pattern that causes cache misses during column-major traversal.
+
+Section 3: Assembly Analysis
+The two functions generate very similar assembly code. 
+Both use nested loops that load values from memory and add them to a running sum. Since the generated instructions are nearly identical, the dramatic performance difference does not come from the assembly itself. 
+Instead, the difference originates from memory access patterns and CPU cache behavior. 
+Row-major traversal accesses memory sequentially and benefits from spatial locality, while column-major traversal causes many more cache misses due to jumping between rows.
 Section 4: Cache Behavior Explanation
