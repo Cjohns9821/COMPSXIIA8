@@ -143,8 +143,35 @@ For the largest matrix size (8000×8000), row-major traversal completed in 14.72
 This occurs because compiler optimizations can improve instruction efficiency, but they cannot change the underlying memory access pattern that causes cache misses during column-major traversal.
 
 Section 3: Assembly Analysis
+Screenshots are Traverse-Row, Traverse-Column
 The two functions generate very similar assembly code. 
 Both use nested loops that load values from memory and add them to a running sum. Since the generated instructions are nearly identical, the dramatic performance difference does not come from the assembly itself. 
 Instead, the difference originates from memory access patterns and CPU cache behavior. 
 Row-major traversal accesses memory sequentially and benefits from spatial locality, while column-major traversal causes many more cache misses due to jumping between rows.
 Section 4: Cache Behavior Explanation
+C stores two-dimensional arrays in row-major order, meaning that all elements in a row are located next to each other in memory. 
+For example, the elements matrix[0][0], matrix[0][1], matrix[0][2], and so on are stored contiguously before the elements of the next row. 
+Because of this layout, traversing a matrix row by row follows the natural organization of the data in memory. During row-major traversal, the CPU accesses memory sequentially, which allows it to take advantage of the cache hierarchy. When a value is requested, the CPU loads an entire cache line containing that value and several neighboring values. 
+Since the next accesses are likely to use those nearby elements, much of the required data is already available in cache, reducing expensive memory accesses.
+
+Column-major traversal behaves very differently. 
+Instead of accessing adjacent memory locations, it accesses elements from different rows while remaining in the same column. 
+Although the CPU still loads a full cache line, most of the data in that cache line is not used immediately. 
+The next access often jumps far away in memory to another row, which may require loading a different cache line. 
+As the matrix size increases, this pattern causes many more cache misses because useful cache data is replaced before it can be reused. 
+This is why the performance gap between row-major and column-major traversal becomes larger for larger matrices. 
+In my tests, the ratio increased from about 1.29× at 1000×1000 to 3.56× at 8000×8000, demonstrating the increasing impact of cache inefficiency.
+
+The compiler cannot completely solve this problem through optimization. 
+Compiler optimizations such as -O2 and -O3 can reduce instruction overhead, improve register usage, and unroll loops. 
+However, they cannot fundamentally change the memory access pattern without altering the behavior of the program. 
+Even though the generated assembly for the two functions is very similar, the CPU interacts with memory differently because of the traversal order. 
+As a result, the performance difference originates primarily from cache behavior rather than from the instructions themselves.
+
+Connection to Final Project
+
+Understanding cache behavior will help me make better design decisions in my final project. 
+I plan to use data structures that store related data together in memory and process data sequentially whenever possible. 
+By avoiding unnecessary memory jumps and using cache-friendly access patterns, I can reduce cache misses and improve performance. 
+This lab showed that algorithm performance depends not only on the code itself but also on how efficiently the program accesses memory.
+I admit that what I write here may be subject to change. I have a good handful of ideas to incorporate!
