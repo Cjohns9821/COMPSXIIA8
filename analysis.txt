@@ -1,7 +1,140 @@
 Section 1: Performance Measurements
+Cache Behavior Lab
+==================
+Comparing row-major vs column-major matrix traversal
+
+These are in order: 00, 02, 03
+
+--- Matrix Size: 1000 x 1000 ---
+Row-major:    1.42 ms (sum: 49500000)
+Column-major: 1.83 ms (sum: 49500000)
+Ratio (col/row): 1.29x
+
+--- Matrix Size: 2000 x 2000 ---
+Row-major:    7.41 ms (sum: 198000000)
+Column-major: 15.35 ms (sum: 198000000)
+Ratio (col/row): 2.07x
+
+--- Matrix Size: 4000 x 4000 ---
+Row-major:    22.85 ms (sum: 792000000)
+Column-major: 72.48 ms (sum: 792000000)
+Ratio (col/row): 3.17x
+
+--- Matrix Size: 8000 x 8000 ---
+Row-major:    97.20 ms (sum: 3168000000)
+Column-major: 345.74 ms (sum: 3168000000)
+Ratio (col/row): 3.56x
+
+==================
+Tests complete.
 
 Section 2: Optimization Level Comparison
+Cache Behavior Lab
+==================
+Comparing row-major vs column-major matrix traversal
 
+--- Matrix Size: 1000 x 1000 ---
+Row-major:    1.45 ms (sum: 49500000)
+Column-major: 2.21 ms (sum: 49500000)
+Ratio (col/row): 1.53x
+
+--- Matrix Size: 2000 x 2000 ---
+Row-major:    5.67 ms (sum: 198000000)
+Column-major: 15.78 ms (sum: 198000000)
+Ratio (col/row): 2.78x
+
+--- Matrix Size: 4000 x 4000 ---
+Row-major:    23.30 ms (sum: 792000000)
+Column-major: 73.56 ms (sum: 792000000)
+Ratio (col/row): 3.16x
+
+--- Matrix Size: 8000 x 8000 ---
+Row-major:    103.76 ms (sum: 3168000000)
+Column-major: 341.58 ms (sum: 3168000000)
+Ratio (col/row): 3.29x
+
+==================
+Tests complete.
+Cache Behavior Lab
+==================
+Comparing row-major vs column-major matrix traversal
+
+--- Matrix Size: 1000 x 1000 ---
+Row-major:    0.32 ms (sum: 49500000)
+Column-major: 0.80 ms (sum: 49500000)
+Ratio (col/row): 2.49x
+
+--- Matrix Size: 2000 x 2000 ---
+Row-major:    1.33 ms (sum: 198000000)
+Column-major: 6.11 ms (sum: 198000000)
+Ratio (col/row): 4.58x
+
+--- Matrix Size: 4000 x 4000 ---
+Row-major:    7.39 ms (sum: 792000000)
+Column-major: 54.20 ms (sum: 792000000)
+Ratio (col/row): 7.33x
+
+--- Matrix Size: 8000 x 8000 ---
+Row-major:    21.83 ms (sum: 3168000000)
+Column-major: 290.44 ms (sum: 3168000000)
+Ratio (col/row): 13.30x
+
+==================
+Tests complete.
+
+Cache Behavior Lab
+==================
+Comparing row-major vs column-major matrix traversal
+
+--- Matrix Size: 1000 x 1000 ---
+Row-major:    0.32 ms (sum: 49500000)
+Column-major: 0.80 ms (sum: 49500000)
+Ratio (col/row): 2.49x
+
+--- Matrix Size: 2000 x 2000 ---
+Row-major:    1.33 ms (sum: 198000000)
+Column-major: 6.11 ms (sum: 198000000)
+Ratio (col/row): 4.58x
+
+--- Matrix Size: 4000 x 4000 ---
+Row-major:    7.39 ms (sum: 792000000)
+Column-major: 54.20 ms (sum: 792000000)
+Ratio (col/row): 7.33x
+
+--- Matrix Size: 8000 x 8000 ---
+Row-major:    21.83 ms (sum: 3168000000)
+Column-major: 290.44 ms (sum: 3168000000)
+Ratio (col/row): 13.30x
+
+==================
+Tests complete.
+
+Cache Behavior Lab
+==================
+Comparing row-major vs column-major matrix traversal
+
+--- Matrix Size: 1000 x 1000 ---
+Row-major:    0.24 ms (sum: 49500000)
+Column-major: 1.66 ms (sum: 49500000)
+Ratio (col/row): 6.96x
+
+--- Matrix Size: 2000 x 2000 ---
+Row-major:    0.91 ms (sum: 198000000)
+Column-major: 6.11 ms (sum: 198000000)
+Ratio (col/row): 6.71x
+
+--- Matrix Size: 4000 x 4000 ---
+Row-major:    4.55 ms (sum: 792000000)
+Column-major: 66.12 ms (sum: 792000000)
+Ratio (col/row): 14.52x
+
+--- Matrix Size: 8000 x 8000 ---
+Row-major:    14.72 ms (sum: 3168000000)
+Column-major: 297.03 ms (sum: 3168000000)
+Ratio (col/row): 20.17x
+
+==================
+Tests complete.
 Section 3: Assembly Analysis
 
 Section 4: Cache Behavior Explanation
